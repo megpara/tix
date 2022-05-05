@@ -22,9 +22,14 @@ type FieldItemProps = {
 };
 const FieldItem = ({ name, label, touched, errors }: FieldItemProps) => (
   <div>
-    <div>{label}</div>
-    <Field name={name} />
-    {errors && touched ? <div>{errors}</div> : null}
+    <div className="mb-2">{label}</div>
+    <div className="mb-5">
+      <Field
+        name={name}
+        className="bg-f2f2f2 border-2 border-white rounded-full p-2 text-sm outline-0"
+      />
+      {errors && touched ? <div className="text-red-500 text-xs mt-3">{errors}</div> : null}
+    </div>
   </div>
 );
 
@@ -36,7 +41,6 @@ type Props = {
 export default function Info({ info, onSubmit }: Props) {
   return (
     <div>
-      <div>Info</div>
       <Formik
         initialValues={info}
         validationSchema={SignupSchema}

@@ -1,0 +1,7 @@
+export default function Container({ children }: any) {
+  return (
+    <div className="flex flex-col items-center justify-center bg-black text-white h-full w-full">
+      {children}
+    </div>
+  );
+}

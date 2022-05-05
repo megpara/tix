@@ -1,101 +1,33 @@
-import type { NextPage } from "next";
-import { AnimatePresence, motion } from "framer-motion";
-import { useRouter } from "next/router";
-import Checkout from "../components/Tickets/Checkout";
-import Quantity from "../components/Tickets/Quantity";
-import useCart from "../hooks/useCart";
-import { OrderResponseBody } from "@paypal/paypal-js";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
-import VoltaLogo from "../assets/patch.png";
-import { useEffect, useState } from "react";
-import Completed from "../components/Tickets/Completed";
-import Landing from "../components/Landing";
-import Info from "../components/Tickets/Info";
-import OrderSummary from "../components/OrderSummary";
-import api from "../lib/api";
-import { Info as InfoType } from "../lib/types";
-
-const Home: NextPage = () => {
-  const [uuid, setUuid] = useState("");
-  const [info, setInfo] = useState<InfoType>({
-    firstName: "",
-    lastName: "",
-    email: "",
-  });
-  const [order, setOrder] = useState<OrderResponseBody | null>(null);
-  const router = useRouter();
-  const cart = useCart();
-
-  const view = router.query.view ? router.query.view : "0";
-  console.log(view);
-  const nextView = () => {
-    router.push(`/?view=${parseInt(view ? (view as string) : "0") + 1}`);
-  };
-
-  useEffect(() => {
-    let goToStart = false;
-    const viewInt = parseInt(view as string);
-    if (viewInt > 1 && cart.cart.tickets === 0) {
-      goToStart = true;
-    }
-    if (viewInt > 2 && info.firstName === "") {
-      goToStart = true;
-    }
-    if (goToStart) {
-      router.push("/");
-    }
-  }, [view]);
-
-  const onSubmitInfo = async (values: any) => {
-    setInfo(values);
-    const uuid = await api.registerIntent(values, cart.cart.tickets);
-    setUuid(uuid);
-    nextView();
-  };
-
-  const orderCompleted = async (order: OrderResponseBody) => {
-    setOrder(order);
-    const response = await api.registerFulfillment(order, uuid);
-    console.log(response);
-    nextView();
-  };
-
-  const Steps = [
-    <Landing />,
-    <Quantity cart={cart} />,
-    <Info info={info} onSubmit={onSubmitInfo} />,
-    <Checkout cart={cart} orderCompleted={orderCompleted} />,
-    <Completed order={order} />,
-  ];
-
-  const showNext = view === "0" || (view === "1" && cart.cart.tickets);
-
+export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center bg-black text-white h-full w-full">
-      <OrderSummary info={info} order={order} cart={cart.cart} />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="w-3/4 mb-10"
-      >
-        <img className="m-auto" style={{ maxWidth: 250 }} src={VoltaLogo.src} />
-      </motion.div>
-      {Steps[parseInt(view as string)]}
-      <AnimatePresence>
-        {showNext && (
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="btn"
-            onClick={nextView}
-          >
-            Next
-          </motion.button>
-        )}
-      </AnimatePresence>
-    </div>
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      className="mb-10 bg-black h-full w-full text-white"
+    >
+      <div className="text-red-500 underline underline-offset-8 p-8">
+        upcoming
+      </div>
+      <div className="grid grid-cols-3 grid-rows-3 m-10">
+        <div className="w-60 m-auto">
+          <img src="backwashb&w.png" />
+          <div className="text-gray-500 uppercase font-bold mt-5">
+            Sunday, June 12
+          </div>
+          <Link href="/tix">
+            <div className="font-bold text-2xl mt-2 cursor-pointer hover:text-red-500">
+              VOLTA X Peter Kalisch: Backwash
+            </div>
+          </Link>
+          <div className="mt-2">
+            <img className="w-3 inline" src="location.png" />
+            <div className="inline ml-2 text-xs">Navel LA</div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
-};
-
-export default Home;
+}
