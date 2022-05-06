@@ -1,7 +1,10 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import { Router, useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <motion.div
       animate={{ opacity: 1 }}
@@ -22,10 +25,23 @@ export default function Home() {
               VOLTA X Peter Kalisch: Backwash
             </div>
           </Link>
-          <div className="mt-2">
+          <div className="mt-2 mb-5">
             <img className="w-3 inline" src="location.png" />
             <div className="inline ml-2 text-xs">Navel LA</div>
           </div>
+          <AnimatePresence>
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="btn"
+              onClick={() => {
+                router.push("/tix");
+              }}
+            >
+              Tickets
+            </motion.button>
+          </AnimatePresence>
         </div>
       </div>
     </motion.div>
