@@ -17,6 +17,7 @@ html,
 body,
 #__next {
   height: 100%;
+  background-color: black;
 }
 
 a {
@@ -37,5 +38,6 @@ input {
 }
 
 * {
+  user-select: none;
   box-sizing: border-box;
 }
