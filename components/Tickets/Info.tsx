@@ -44,7 +44,12 @@ export default function Info({ info, onSubmit }: Props) {
   return (
     <div className="w-4/5 lg:w-3/5 mt-10 lg:m-0">
       <Formik
-        initialValues={info}
+        initialValues={{
+          firstName: "",
+          lastName: "",
+          email: "",
+          toggle: true,
+        }}
         validationSchema={SignupSchema}
         onSubmit={onSubmit}
       >
@@ -69,13 +74,20 @@ export default function Info({ info, onSubmit }: Props) {
                 errors={errors.email}
                 touched={touched.email}
               />
-              <label className="text-xs"><Field type="checkbox" name="toggle" className="mr-2"/>Subscribe to our mailing list</label>
+              {/* <label className="text-xs">
+                <Field type="checkbox" name="toggle" className="mr-2" />
+                Subscribe to our mailing list
+              </label> */}
             </div>
-            <div className="flex justify-center">
-            <button disabled={isSubmitting} type="submit" className="btn mt-10 w-min">
+            {/* <div className="flex justify-center"> */}
+            <button
+              disabled={isSubmitting}
+              type="submit"
+              className="btn mt-10 w-min"
+            >
               Submit
             </button>
-            </div>
+            {/* </div> */}
           </Form>
         )}
       </Formik>

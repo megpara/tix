@@ -37,7 +37,10 @@ input {
   border-bottom: 1px solid white;
 }
 
-* {
+div {
   user-select: none;
+}
+
+* {
   box-sizing: border-box;
 }
