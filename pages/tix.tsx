@@ -9,13 +9,13 @@ import { OrderResponseBody } from "@paypal/paypal-js";
 import VoltaLogo from "../assets/patch.png";
 import { useEffect, useState } from "react";
 import Completed from "../components/Tickets/Completed";
-import Landing from "../components/Landing";
 import Info from "../components/Tickets/Info";
 import OrderSummary from "../components/OrderSummary";
 import api from "../lib/api";
 import { Info as InfoType } from "../lib/types";
 import Container from "../components/Tickets/Container";
 import { TIX_ROOT } from "../lib/constants";
+import axios from "axios";
 
 const Tix: NextPage = () => {
   const [uuid, setUuid] = useState("");
@@ -23,6 +23,7 @@ const Tix: NextPage = () => {
     firstName: "",
     lastName: "",
     email: "",
+    toggle: true,
   });
   const [order, setOrder] = useState<OrderResponseBody | null>(null);
   const router = useRouter();
@@ -54,6 +55,10 @@ const Tix: NextPage = () => {
     setInfo(values);
     const uuid = await api.registerIntent(values, cart.cart.tickets);
     setUuid(uuid);
+    {
+      values.toggle &&
+        (await axios.post("/api/subscribe", { values }).catch(console.log));
+    }
     nextView();
   };
 
@@ -68,36 +73,41 @@ const Tix: NextPage = () => {
     <Quantity cart={cart} />,
     <Info info={info} onSubmit={onSubmitInfo} />,
     <Checkout cart={cart} orderCompleted={orderCompleted} />,
-    <Completed order={order} />,
+    <Completed order={order} cart={cart.cart} info={info} />,
   ];
 
-  const showNext = view === "0" || (view === "1" && cart.cart.tickets);
+  const showNext = view === "0" && cart.cart.tickets;
 
   return (
     <Container>
       <OrderSummary info={info} order={order} cart={cart.cart} />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="w-4/5 lg:w-3/5"
-      >
-        <div className="font-bold text-3xl lg:m-10">
-          VOLTA X Peter Kalisch: Backwash
-        </div>
-        <div className="grid grid-cols-2 grid-rows-1 lg:m-10 mt-10">
-          <div>
-            <div>Location</div>
-            <img className="w-3 inline" src="location.png" />
-            <a href="https://www.navel.la/" target="_blank"><div className="inline ml-2 text-xs underline decoration-red-500">Navel LA</div></a>
+      {view !== "3" && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="w-4/5 lg:w-3/5"
+        >
+          <div className="font-bold text-3xl lg:m-10">
+            VOLTA X Peter Kalisch: Backwash
           </div>
-          <div>
-            <div>Date</div>
-            <div className="text-xs">
-              Sunday, June 12
+          <div className="grid grid-cols-2 grid-rows-1 lg:m-10 mt-10">
+            <div>
+              <div>Location</div>
+              <img className="w-3 inline" src="location.png" />
+              <a href="https://www.navel.la/" target="_blank">
+                <div className="inline ml-2 text-xs underline decoration-red-500">
+                  Navel LA
+                </div>
+              </a>
+            </div>
+            <div>
+              <div>Date</div>
+              <div className="text-xs">Sunday, June 12</div>
+              <div className="text-xs">8pm</div>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      )}
       {Steps[parseInt(view as string)]}
       <AnimatePresence>
         {showNext && (

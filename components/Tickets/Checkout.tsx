@@ -57,7 +57,7 @@ export default function Checkout({ cart, orderCompleted }: Props) {
       {/* <div className="text-4xl text-center mb-0">
         {cart.cart.tickets}x Tickets
       </div> */}
-      <div className="text-center bg-red-500 rounded-full p-5 m-auto mb-5 w-24 h-24 flex items-center justify-center text-3xl">
+      <div className="text-center text-lg my-5 bg-red-500 rounded-full p-5 m-auto w-20 h-10 flex items-center justify-center">
         ${cost}
       </div>
       <PayPalButtons
