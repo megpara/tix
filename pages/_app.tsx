@@ -10,7 +10,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       options={{
         "enable-funding": "venmo",
         "disable-funding": "credit",
-        "client-id": "test",
+        "client-id":
+          process.env.NODE_ENV === "development" ? "test" : CLIENT_ID,
       }}
     >
       <Component {...pageProps} />
