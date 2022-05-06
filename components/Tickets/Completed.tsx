@@ -22,16 +22,20 @@ export default function Completed({ cart, info, order }: Props) {
         <div>${cart.total}.00</div>
       </div>
       <div className="text-base mb-5">June 12, 8pm</div>
-      <a href="https://www.navel.la/" target="_blank">
+      <a href="https://www.navel.la/" target="_blank" rel="noreferrer">
         <div className="text-sm">Navel LA</div>
       </a>
       <div className="text-sm">1611 S Hope Street</div>
-      <a href="https://www.google.com/maps/d/u/0/viewer?mid=1btUtt4_74gw3JO2Zfz_m26OYyiDATLlv&ll=34.03582020886561%2C-118.26735479243314&z=17">
+      <a
+        href={`https://www.google.com/maps/d/u/0/viewer?mid=1btUtt4_74gw3JO2Zfz_m26OYyiDATLlv&ll=34.03582020886561%2C-118.26735479243314&z=17`}
+      >
         <div className="text-red-500 mb-5 text-sm underline underline-offset-2">
           Parking
         </div>
       </a>
-      <div className="text-sm mt-20">(Screenshot this page for your records)</div>
+      <div className="text-sm mt-20">
+        (Screenshot this page for your records)
+      </div>
     </div>
   );
 }
