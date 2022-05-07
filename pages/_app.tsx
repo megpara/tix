@@ -11,19 +11,25 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>BACKWASH</title>
         <meta name="description" content="VOLTA X Peter Kalisch" />
-        <meta name="image" content="/backwashb&w.png" />
+        <meta property="og:title" content="BACKWASH" key="ogtitle" />
+        <meta
+          property="og:description"
+          content="VOLTA X Peter Kalisch"
+          key="ogdesc"
+        />
+        <meta property="og:image" content="/meta_img.png" />
         <link rel="icon" href="/favicon.png" />
       </Head>
       <PayPalScriptProvider
-      options={{
-        "enable-funding": "venmo",
-        "disable-funding": "credit",
-        "client-id":
-          process.env.NODE_ENV === "development" ? "test" : CLIENT_ID,
-      }}
-    >
-      <Component {...pageProps} />
-    </PayPalScriptProvider>
+        options={{
+          "enable-funding": "venmo",
+          "disable-funding": "credit",
+          "client-id":
+            process.env.NODE_ENV === "development" ? "test" : CLIENT_ID,
+        }}
+      >
+        <Component {...pageProps} />
+      </PayPalScriptProvider>
     </div>
   );
 }
