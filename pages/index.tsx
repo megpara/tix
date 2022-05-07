@@ -14,7 +14,7 @@ export default function Home() {
       <div className="text-red-500 underline underline-offset-8 p-8">
         upcoming
       </div>
-      <div className="grid grid-cols-3 grid-rows-3 m-10">
+      <div className="grid grid-cols-3 m-10">
         <div className="w-60 m-auto">
           <img src="backwashb&w.png" />
           <div className="text-gray-500 uppercase font-bold mt-5">

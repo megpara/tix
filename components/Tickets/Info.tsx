@@ -69,12 +69,19 @@ export default function Info({ info, onSubmit }: Props) {
                 errors={errors.email}
                 touched={touched.email}
               />
-              <label className="text-xs"><Field type="checkbox" name="toggle" className="mr-2"/>Subscribe to our mailing list</label>
+              <label className="text-xs">
+                <Field type="checkbox" name="toggle" className="mr-2" />
+                Subscribe to our mailing list
+              </label>
             </div>
             <div className="flex justify-center">
-            <button disabled={isSubmitting} type="submit" className="btn mt-10 w-min">
-              Submit
-            </button>
+              <button
+                disabled={isSubmitting}
+                type="submit"
+                className="btn mt-10 w-min"
+              >
+                Submit
+              </button>
             </div>
           </Form>
         )}

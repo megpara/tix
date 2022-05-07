@@ -55,25 +55,23 @@ const Tix: NextPage = () => {
     setInfo(values);
     const uuid = await api.registerIntent(values, cart.cart.tickets);
     setUuid(uuid);
-    {
-      values.toggle &&
-        (await axios.post("/api/subscribe", { values }).catch(console.log));
+    if (values.toggle) {
+      axios.post("/api/subscribe", { values }).catch(console.log);
     }
     nextView();
   };
 
   const orderCompleted = async (order: OrderResponseBody) => {
     setOrder(order);
-    const response = await api.registerFulfillment(order, uuid);
-    console.log(response);
+    const response = api.registerFulfillment(order, uuid);
     nextView();
   };
 
   const Steps = [
-    <Quantity cart={cart} />,
-    <Info info={info} onSubmit={onSubmitInfo} />,
-    <Checkout cart={cart} orderCompleted={orderCompleted} />,
-    <Completed order={order} cart={cart.cart} info={info} />,
+    <Quantity cart={cart} key="quantity" />,
+    <Info info={info} onSubmit={onSubmitInfo} key="info" />,
+    <Checkout cart={cart} orderCompleted={orderCompleted} key="checkout" />,
+    <Completed order={order} cart={cart.cart} info={info} key="completed" />,
   ];
 
   const showNext = view === "0" && cart.cart.tickets;
@@ -94,7 +92,7 @@ const Tix: NextPage = () => {
             <div>
               <div>Location</div>
               <img className="w-3 inline" src="location.png" />
-              <a href="https://www.navel.la/" target="_blank">
+              <a href="https://www.navel.la/" rel="noreferrer" target="_blank">
                 <div className="inline ml-2 text-xs underline decoration-red-500">
                   Navel LA
                 </div>

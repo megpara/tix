@@ -17,6 +17,7 @@ html,
 body,
 #__next {
   height: 100%;
+  background-color: black;
 }
 
 a {
@@ -34,6 +35,10 @@ input {
   padding: 5px 10px;
   min-width: 100px;
   border-bottom: 1px solid white;
+}
+
+div {
+  user-select: none;
 }
 
 * {

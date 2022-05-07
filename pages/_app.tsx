@@ -15,14 +15,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <PayPalScriptProvider
-        options={{
-          "enable-funding": "venmo",
-          "disable-funding": "credit",
-          "client-id": "test",
-        }}
-      >
-        <Component {...pageProps} />
-      </PayPalScriptProvider>
+      options={{
+        "enable-funding": "venmo",
+        "disable-funding": "credit",
+        "client-id":
+          process.env.NODE_ENV === "development" ? "test" : CLIENT_ID,
+      }}
+    >
+      <Component {...pageProps} />
+    </PayPalScriptProvider>
     </div>
   );
 }
