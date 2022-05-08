@@ -9,15 +9,18 @@ export default function Home() {
     <motion.div
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
-      className="mb-10 bg-black h-full w-full text-white"
+      className="mb-10 h-full w-full text-white"
     >
-      <div className="text-red-500 underline underline-offset-8 p-8">
-        upcoming
+      <div className="grid grid-cols-3">
+      <div className="text-red-500 font-bold underline underline-offset-8 text-sm m-5">
+        Upcoming
       </div>
-      <div className="grid grid-cols-3 m-10">
+      {/* <img src="/volta_white_logo.png" className="w-24 m-auto"/> */}
+      </div>
+      <div className="m-20">
         <div className="w-60 m-auto">
           <img src="backwashb&w.png" />
-          <div className="text-gray-500 uppercase font-bold mt-5">
+          <div className="text-neutral-500 uppercase font-bold mt-5">
             Sunday, June 12
           </div>
           <Link href="/tix">

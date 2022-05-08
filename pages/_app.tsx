@@ -7,7 +7,7 @@ const CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div>
+    <>
       <Head>
         <title>BACKWASH</title>
         <meta name="description" content="VOLTA X Peter Kalisch" />
@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       >
         <Component {...pageProps} />
       </PayPalScriptProvider>
-    </div>
+    </>
   );
 }
 
