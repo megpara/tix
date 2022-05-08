@@ -10,9 +10,9 @@ type Props = {
 
 export default function OrderSummary({ info, order, cart }: Props) {
   return (
-    <div className="absolute left-5 top-5">
+    <div className="flex m-5 w-full">
       {cart.tickets > 0 && (
-        <div>
+        <div className="pl-5">
           {cart.tickets}x Tickets: ${cart.total}.00
         </div>
       )}
