@@ -78,7 +78,7 @@ export default function Info({ info, onSubmit }: Props) {
               <button
                 disabled={isSubmitting}
                 type="submit"
-                className="btn mt-10 w-min"
+                className="btn m-10 w-min"
               >
                 Submit
               </button>
