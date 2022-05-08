@@ -17,7 +17,7 @@ export default function Home() {
       </div>
       {/* <img src="/volta_white_logo.png" className="w-24 m-auto"/> */}
       </div>
-      <div className="m-20">
+      <div className="m-10">
         <div className="w-60 m-auto">
           <img src="backwashb&w.png" />
           <div className="text-neutral-500 uppercase font-bold mt-5">
