@@ -12,7 +12,7 @@ export default function Home() {
       initial={{ opacity: 0 }}
       className="mb-10 h-full w-full text-white"
     >
-      <div className="">
+      <div className="pb-10">
         <div className="text-red-500 font-bold underline underline-offset-8 text-sm m-5">
           Upcoming
         </div>
@@ -32,20 +32,21 @@ export default function Home() {
               <img className="w-3 inline" src="location.png" />
               <div className="inline ml-2 text-xs">{event.location}</div>
             </div>
+            <div className="text-sm mb-5">{event.description}</div>
+            <AnimatePresence>
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="btn"
+                onClick={() => {
+                  router.push("/tix");
+                }}
+              >
+                Tickets
+              </motion.button>
+            </AnimatePresence>
           </div>
-          <AnimatePresence>
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="btn"
-              onClick={() => {
-                router.push("/tix");
-              }}
-            >
-              Tickets
-            </motion.button>
-          </AnimatePresence>
         </div>
       </div>
     </motion.div>
