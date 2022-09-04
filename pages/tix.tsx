@@ -81,7 +81,7 @@ const Tix: NextPage = () => {
     <Date date={date} selectDate={selectDate} key={date} />,
     <Quantity cart={cart} key="quantity" />,
     <Info info={info} onSubmit={onSubmitInfo} key="info" />,
-    // <Checkout cart={cart} orderCompleted={orderCompleted} key="checkout" />,
+    <Checkout cart={cart} orderCompleted={orderCompleted} key="checkout" />,
     <Completed
       order={order}
       cart={cart.cart}
