@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { v4 as uuidv4 } from "uuid";
 import ddb from "../../lib/ddb";
+import { event } from "../config";
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,7 +13,7 @@ export default async function handler(
 
   const { create_time, update_time, id, firstName, lastName, payer_id, uuid } =
     req.body;
-  console.log(req.body);
+  const { slug } = event;
   var params = {
     TableName: "volta-fulfillment",
     Item: {
@@ -23,6 +24,7 @@ export default async function handler(
       firstName,
       lastName,
       payer_id,
+      slug,
       timestamp: new Date().toISOString(),
     },
   };

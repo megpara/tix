@@ -26,7 +26,7 @@ const FieldItem = ({ name, label, touched, errors }: FieldItemProps) => (
     <div className="mb-5">
       <Field
         name={name}
-        className="bg-f2f2f2 border-2 border-white rounded-full p-2 text-sm outline-0 w-3/5"
+        className="bg-f2f2f2 border-2 border-white rounded-full p-2 text-sm outline-0 w-full md:w-3/5"
       />
       {errors && touched ? (
         <div className="text-red-500 text-xs mt-3">{errors}</div>

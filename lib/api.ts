@@ -9,12 +9,18 @@ const endpoints = {
 
 const api = axios.create();
 
-const registerIntent = async (info: Info, numTickets: number) => {
-  const res = await api.post(endpoints.intent, { ...info, numTickets });
+const registerIntent = async (info: Info, numTickets: number, date: string) => {
+  const res = await api.post(endpoints.intent, { ...info, numTickets, date });
   return res.data;
 };
 
-const registerFulfillment = async (order: OrderResponseBody, uuid: string) => {
+const registerFulfillment = async (
+  order: OrderResponseBody,
+  uuid: string,
+  numOfTickets: number,
+  email: string,
+  date: string
+) => {
   const {
     create_time,
     update_time,

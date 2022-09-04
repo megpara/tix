@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { v4 as uuidv4 } from "uuid";
 import ddb from "../../lib/ddb";
+import { event } from "../config";
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,7 +11,8 @@ export default async function handler(
     res.status(200).send("hm");
   }
 
-  const { firstName, lastName, email, numTickets } = req.body;
+  const { firstName, lastName, email, numTickets, date } = req.body;
+  const { slug } = event;
   const uuid = uuidv4();
   var params = {
     TableName: "volta-intent",
@@ -20,6 +22,8 @@ export default async function handler(
       lastName,
       email,
       numTickets,
+      date,
+      slug,
       timestamp: new Date().toISOString(),
     },
   };

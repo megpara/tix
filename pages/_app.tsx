@@ -3,7 +3,6 @@ import type { AppProps } from "next/app";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!;
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <PayPalScriptProvider
@@ -11,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         "enable-funding": "venmo",
         "disable-funding": "credit",
         "client-id":
-          process.env.NODE_ENV === "development" ? "test" : CLIENT_ID,
+          process.env.NODE_ENV !== "development" ? "test" : CLIENT_ID,
       }}
     >
       <Component {...pageProps} />
