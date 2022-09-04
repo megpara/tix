@@ -1,13 +1,15 @@
 import { OrderResponseBody } from "@paypal/paypal-js";
 import { Cart } from "../../hooks/types";
 import { Info } from "../../lib/types";
+import { event } from "../../pages/config";
 
 type Props = {
   order: OrderResponseBody | null;
   cart: Cart;
   info: Info;
+  date: string;
 };
-export default function Completed({ cart, info, order }: Props) {
+export default function Completed({ cart, info, order, date }: Props) {
   return (
     <div className="text-center text-2xl mb-5 w-4/5 lg:w-5/12">
       <div>Thanks {order && order.payer.name?.given_name}! You're all set.</div>
@@ -21,16 +23,14 @@ export default function Completed({ cart, info, order }: Props) {
         <div>{cart.tickets}x Tickets</div>
         <div>${cart.total}.00</div>
       </div>
-      <div className="text-base mb-5">June 12, 8pm</div>
+      <div className="text-base mb-5">{date}</div>
       <a href="https://www.navel.la/" target="_blank" rel="noreferrer">
-        <div className="text-sm">Navel LA</div>
+        <div className="text-sm">{event.location}</div>
       </a>
-      <div className="text-sm">1611 S Hope Street</div>
-      <a
-        href={`https://www.google.com/maps/d/u/0/viewer?mid=1btUtt4_74gw3JO2Zfz_m26OYyiDATLlv&ll=34.03582020886561%2C-118.26735479243314&z=17`}
-      >
+      <div className="text-sm">{event.address}</div>
+      <a href={event.googleMapsLink}>
         <div className="text-red-500 mb-5 text-sm underline underline-offset-2">
-          Parking
+          Map
         </div>
       </a>
       <div className="text-sm mt-20">
