@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import Head from "next/head";
-import { event } from "./config";
+import { event } from "../lib/config";
 
 const CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!;
 function MyApp({ Component, pageProps }: AppProps) {

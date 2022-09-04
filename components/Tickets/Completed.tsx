@@ -1,7 +1,7 @@
 import { OrderResponseBody } from "@paypal/paypal-js";
 import { Cart } from "../../hooks/types";
 import { Info } from "../../lib/types";
-import { event } from "../../pages/config";
+import { event } from "../../lib/config";
 
 type Props = {
   order: OrderResponseBody | null;

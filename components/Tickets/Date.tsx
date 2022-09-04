@@ -1,4 +1,4 @@
-import { event } from "../../pages/config";
+import { event } from "../../lib/config";
 
 type Props = {
   date: string;

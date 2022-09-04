@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { v4 as uuidv4 } from "uuid";
 import ddb from "../../lib/ddb";
-import { event } from "../config";
+import { event } from "../../lib/config";
 
 export default async function handler(
   req: NextApiRequest,

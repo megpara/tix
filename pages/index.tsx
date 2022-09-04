@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { Router, useRouter } from "next/router";
-import { event } from "./config";
+import { event } from "../lib/config";
 
 export default function Home() {
   const router = useRouter();

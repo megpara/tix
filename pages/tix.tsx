@@ -16,7 +16,7 @@ import { Info as InfoType } from "../lib/types";
 import Container from "../components/Tickets/Container";
 import { TIX_ROOT } from "../lib/constants";
 import axios from "axios";
-import { event } from "./config";
+import { event } from "../lib/config";
 import Date from "../components/Tickets/Date";
 
 const Tix: NextPage = () => {
