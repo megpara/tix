@@ -1,1 +1,1 @@
-export const COST_PER_TICKET = 15;
+export const COST_PER_TICKET = 20;
