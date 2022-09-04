@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>BACKWASH</title>
+        <title>MILK</title>
         <meta name="description" content={`${event.title}`} />
         <meta property="og:title" content="MILK" key="ogtitle" />
         <meta
