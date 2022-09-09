@@ -17,9 +17,9 @@ export default function Home() {
           Upcoming
         </div>
 
-        <div className="m-5">
+        <div className="md:m-10 m-12">
           <div className="m-auto" style={{ maxWidth: 500 }}>
-            <img src="olfaction.jpeg" style={{ maxHeight: 400 }} />
+            <img src="olfactionHeaderImg.png" style={{ maxHeight: 400 }} />
             <div className="text-gray-500 uppercase font-bold mt-5">
               {event.dates.join(" || ")}
             </div>
