@@ -13,7 +13,7 @@ export default function Date({ date, selectDate }: Props) {
         return (
           <div
             key={d}
-            style={{ background: date === d ? "red" : "white" }}
+            style={{ background: date === d ? "#6b7280" : "white" }}
             onClick={() => selectDate(d)}
             className="bg-white text-black text-2xl m-5 p-2 text-center font-bold border-white border-solid border-4 cursor-pointer"
           >
