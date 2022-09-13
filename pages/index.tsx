@@ -30,7 +30,9 @@ export default function Home() {
             </Link>
             <div className="mt-2 mb-5">
               <img className="w-3 inline" src="location.png" />
-              <div className="inline ml-2 text-xs">{event.location}</div>
+              <a href="https://artandolfaction.com/" rel="noreferrer" target="_blank">
+              <div className="inline ml-2 text-xs underline decoration-red-500">{event.location}</div>
+              </a>
             </div>
             <div className="text-sm mb-5">{event.description}</div>
             <AnimatePresence>

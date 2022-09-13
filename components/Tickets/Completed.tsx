@@ -24,7 +24,7 @@ export default function Completed({ cart, info, order, date }: Props) {
         <div>${cart.total}.00</div>
       </div>
       <div className="text-base mb-5">{date}</div>
-      <a href="https://www.navel.la/" target="_blank" rel="noreferrer">
+      <a href="https://artandolfaction.com/" target="_blank" rel="noreferrer">
         <div className="text-sm">{event.location}</div>
       </a>
       <div className="text-sm">{event.address}</div>

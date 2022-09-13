@@ -108,7 +108,7 @@ const Tix: NextPage = () => {
             <div>
               <div>Location</div>
               <img className="w-3 inline" src="location.png" />
-              <a href="https://www.navel.la/" rel="noreferrer" target="_blank">
+              <a href="https://artandolfaction.com/" rel="noreferrer" target="_blank">
                 <div className="grid-column inline ml-2 text-xs underline decoration-red-500">
                   {event.location}
                 </div>
@@ -119,7 +119,7 @@ const Tix: NextPage = () => {
                 <div className="">Date</div>
                 {/* <div className="text-xs">Sunday, June 12</div>
               <div className="text-xs">8pm</div> */}
-                <div>{date}</div>
+                <div>{date}, 6PM</div>
               </div>
             )}
           </div>
