@@ -21,7 +21,7 @@ export default function Home() {
           <div className="m-auto" style={{ maxWidth: 500 }}>
             <img src="olfactionHeaderImg.png" style={{ maxHeight: 400 }} />
             <div className="text-gray-500 uppercase font-bold mt-5">
-              {event.dates.join(" || ")}
+              {event.dates.join(" | ")}, 6pm
             </div>
             <Link href="/tix">
               <div className="font-bold text-2xl mt-2 cursor-pointer hover:text-red-500">
