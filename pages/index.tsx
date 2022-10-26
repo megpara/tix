@@ -19,7 +19,7 @@ export default function Home() {
 
         <div className="md:m-10 m-12">
           <div className="m-auto" style={{ maxWidth: 500 }}>
-            <img src="olfaction.png" style={{ maxHeight: 400 }} />
+            <img src="olfactionHeaderImg.png" style={{ maxHeight: 400 }} />
             <div className="text-gray-500 uppercase font-bold mt-5">
               {event.dates.join(" | ")}, 6pm
             </div>

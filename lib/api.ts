@@ -5,6 +5,8 @@ import { OrderResponseBody } from "@paypal/paypal-js";
 const endpoints = {
   intent: "/api/intent",
   fulfillment: "/api/fulfillment",
+  getIntents: "/api/get-ticket-intents",
+  getFulfillments: "/api/get-ticket-fulfillments",
 };
 
 const api = axios.create();
@@ -14,13 +16,7 @@ const registerIntent = async (info: Info, numTickets: number, date: string) => {
   return res.data;
 };
 
-const registerFulfillment = async (
-  order: OrderResponseBody,
-  uuid: string,
-  numOfTickets: number,
-  email: string,
-  date: string
-) => {
+const registerFulfillment = async (order: OrderResponseBody, uuid: string, numOfTickets: number, email: string, date: string) => {
   const {
     create_time,
     update_time,
@@ -44,4 +40,15 @@ const registerFulfillment = async (
   return res.data;
 };
 
-export default { registerIntent, registerFulfillment };
+const getTicketIntents = async (event: string) => {
+  const res = await api.get(endpoints.getIntents, { params: { event } });
+  return res.data;
+};
+
+const getTicketFulfillments = async (event: string) => {
+  const res = await api.get(endpoints.getFulfillments, { params: { event } });
+  // To do - better event filtering
+  return res.data;
+};
+
+export default { registerIntent, registerFulfillment, getTicketIntents, getTicketFulfillments };
