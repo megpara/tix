@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           content={`${event.description}`}
           key="ogdesc"
         />
-        <meta property="og:image" content="/olfactionHeaderImg.png" />
+        <meta property="og:image" content="/olfaction.png" />
         <link rel="icon" href="/favicon.png" />
       </Head>
       <PayPalScriptProvider
