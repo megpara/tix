@@ -3,7 +3,7 @@ import useAdmin from "../hooks/useAdmin";
 // You can match fuillments to intents using their uuid, to get the ticket number from the intent
 export default function Admin() {
   const { intents, fulfillments } = useAdmin();
-  console.log(intents);
+
   return (
     <div style={{ color: "red" }}>
       <h1>Admin</h1>
