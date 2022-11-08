@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../lib/api";
+import { fulfillmentWithIntent } from "../lib/utils";
 import { IntentData, FulfillmentData } from "./types";
 
 const EVENT = "MILK";
@@ -13,10 +14,7 @@ export default function useAdmin() {
     api.getTicketFulfillments(EVENT).then(setFulfillments);
   }, []);
 
-  const fulfillmentWithIntent = fulfillments.map((fulfillment) => {
-    const intent = intents.find((intent) => intent.uuid === fulfillment.uuid);
-    return { ...intent, ...fulfillment };
-  });
+  const fulfillmentsXIntents = fulfillmentWithIntent(fulfillments, intents);
 
-  return { intents, fulfillments: fulfillmentWithIntent };
+  return { intents, fulfillments: fulfillmentsXIntents };
 }

@@ -20,7 +20,7 @@ export default function Admin() {
         </div>
         <div>
           <h2>Fulfillments</h2>
-          {fulfillments.map((item) => (
+          {fulfillments.map((item: any) => (
             <div key={item.uuid} style={{ margin: "10px 0px" }}>
               {" "}
               {item.firstName} {item.lastName} - {item.numTickets} tickets - {item.date}
