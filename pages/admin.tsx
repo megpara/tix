@@ -10,7 +10,9 @@ const FulfillmentItem = ({ children }: any) => (
 
 export default function Admin() {
   const { intents, fulfillments } = useAdmin();
-
+  if (fulfillments.length === 0 || !fulfillments[0].date) {
+    return <div>loading...</div>;
+  }
   return (
     <div style={{ color: "red" }}>
       <h1>Admin</h1>
@@ -26,20 +28,24 @@ export default function Admin() {
             ))}
         </div> */}
         <table style={{ userSelect: "all" }}>
-          <h2>Fulfillments</h2>
-          {fulfillments
-            .sort((a, b) => a.lastName!.localeCompare(b.lastName!))
-            .sort((a, b) => a.date!.localeCompare(b.date!))
-            .map((item: any) => (
-              <tr key={item.uuid} style={{ margin: "0px 0px", userSelect: "all" }} className="flex">
-                <FulfillmentItem>
-                  {item.firstName} {item.lastName}
-                </FulfillmentItem>
-                <FulfillmentItem>{item.email}</FulfillmentItem>
-                <FulfillmentItem>{item.numTickets} tickets</FulfillmentItem>
-                <FulfillmentItem>{item.date}</FulfillmentItem>
-              </tr>
-            ))}
+          <thead>
+            <tr>tickets</tr>
+          </thead>
+          <tbody>
+            {fulfillments
+              .sort((a, b) => a.lastName!.localeCompare(b.lastName!))
+              .sort((a, b) => a.date!.localeCompare(b.date!))
+              .map((item: any) => (
+                <tr key={item.uuid} style={{ margin: "0px 0px", userSelect: "all" }} className="flex">
+                  <FulfillmentItem>
+                    {item.firstName} {item.lastName}
+                  </FulfillmentItem>
+                  <FulfillmentItem>{item.email}</FulfillmentItem>
+                  <FulfillmentItem>{item.numTickets} tickets</FulfillmentItem>
+                  <FulfillmentItem>{item.date}</FulfillmentItem>
+                </tr>
+              ))}
+          </tbody>
         </table>
       </div>
     </div>

@@ -15,6 +15,5 @@ export default function useAdmin() {
   }, []);
 
   const fulfillmentsXIntents = fulfillmentWithIntent(fulfillments, intents);
-
   return { intents, fulfillments: fulfillmentsXIntents };
 }
