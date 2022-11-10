@@ -18,7 +18,7 @@ const bao = {
 const ariel = {
   create_time: "2022-11-01T22:19:12Z",
   date: "Thursday 11.10.2022",
-  email: "ariel@ariel.ariel",
+  email: "arielklevecz@gmail.com",
   firstName: "Ariel",
   id: "10E53930PY9542836",
   lastName: "Klevecz",
